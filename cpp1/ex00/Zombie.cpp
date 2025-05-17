@@ -6,14 +6,14 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:06:22 by sminot            #+#    #+#             */
-/*   Updated: 2025/05/17 13:50:55 by sminot           ###   ########.fr       */
+/*   Updated: 2025/05/17 20:29:15 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 #include <cstdlib>
 
-std::string random_name(void)
+std::string randomName(void)
 {
 	std::string name;
 	int nb_letter = std::rand() % 3 + 4;
@@ -27,7 +27,7 @@ std::string random_name(void)
 
 
 Zombie::Zombie() :
-_name(random_name())
+_name(randomName())
 {
 	std::cout << "Zombie " << _name << " as been created" << std::endl;
 }
