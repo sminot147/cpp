@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:52:48 by sminot            #+#    #+#             */
-/*   Updated: 2025/05/15 18:06:19 by sminot           ###   ########.fr       */
+/*   Updated: 2025/05/17 10:37:38 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 class Zombie{
 
 public :
-	Zombie* newZombie( std::string name );
-	void randomChump( std::string name );
-	
-	void announce( void )
+	Zombie();
+	Zombie(std::string);
+	~Zombie();
+
+	void announce( void );
 
 private :
-	std::string name;
-	static int nb_Zombie;
-}
+	std::string _name;
+};
 
 #endif
