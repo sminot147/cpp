@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 17:52:48 by sminot            #+#    #+#             */
-/*   Updated: 2025/05/19 20:03:37 by sminot           ###   ########.fr       */
+/*   Created: 2025/05/19 20:20:21 by sminot            #+#    #+#             */
+/*   Updated: 2025/05/20 14:05:09 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#include "Harl.hpp"
 
-# include <iostream>
+int main(int ac, char **av) {
+	
+	Harl harl;
+	
+	if (ac == 1)
+	{
+		std::cout<< "Harl thinking about his next complain" <<std::endl;
+		return 0;
+	}
+	for (int i = 1; i < ac; i++){
+		harl.complain(av[i]);
+	}
 
-class Zombie{
-
-public :
-	Zombie();
-	Zombie(std::string);
-	~Zombie();
-
-	void announce( void ) const;
-
-private :
-	std::string _name;
-};
-
-#endif
+	return 0;
+}

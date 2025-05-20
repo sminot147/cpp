@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:06:22 by sminot            #+#    #+#             */
-/*   Updated: 2025/05/17 14:16:11 by sminot           ###   ########.fr       */
+/*   Updated: 2025/05/19 20:05:31 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ Zombie::~Zombie()
 	std::cout << "Zombie " << this->_name << " as been destroy" << std::endl;
 }
 
-void	Zombie::announce(void) {
+void	Zombie::announce(void) const {
 	std::cout << this->_name << " : BraiiiiiiinnnzzzZ..." << std::endl;
 }
 

@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 17:52:48 by sminot            #+#    #+#             */
-/*   Updated: 2025/05/19 20:00:43 by sminot           ###   ########.fr       */
+/*   Updated: 2025/05/19 20:03:19 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public :
 
 	void set_name(std::string);
 
-	void announce( void );
+	void announce( void ) const;
 
 private :
 	std::string _name;

@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 17:52:48 by sminot            #+#    #+#             */
-/*   Updated: 2025/05/19 20:03:37 by sminot           ###   ########.fr       */
+/*   Created: 2025/05/19 20:20:18 by sminot            #+#    #+#             */
+/*   Updated: 2025/05/20 14:05:22 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#ifndef HARL_HPP
+# define HARL_HPP
 
+# include <string>
 # include <iostream>
 
-class Zombie{
+class Harl {
 
-public :
-	Zombie();
-	Zombie(std::string);
-	~Zombie();
+public:
+	void complain(std::string level) const;
 
-	void announce( void ) const;
-
-private :
-	std::string _name;
+private:
+	void debug(void) const;
+	void info(void) const;
+	void warning(void) const;
+	void error(void) const;
 };
 
 #endif
