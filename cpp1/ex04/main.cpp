@@ -31,10 +31,11 @@ int main(int ac, char **av){
 	std::string toReplace = av[3];
 	size_t	lenToFind = toFind.length();
 	std::string line;
-	size_t pos;
+	std::string::size_type pos;
 	while (1){
+		pos = 0;
 		std::getline(infile, line);
-		while ((pos = line.find(toFind)) != std::string::npos){
+		while ((pos = line.find(toFind, pos)) != std::string::npos){
 			line = line.substr(0, pos) + toReplace + line.substr(pos + lenToFind);
 			pos += lenToFind;
 		}
