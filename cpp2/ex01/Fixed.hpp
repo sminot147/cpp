@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:56:23 by sminot            #+#    #+#             */
-/*   Updated: 2025/05/26 11:23:38 by sminot           ###   ########.fr       */
+/*   Updated: 2025/05/26 12:01:15 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ public:
 	void	setRawBits(int const raw);
 
 	//Convert
-	float toFloat( void ) const;
-	int toInt( void ) const;
+	float	toFloat( void ) const;
+	int		toInt( void ) const;
 
 private:
 	int				 _value;

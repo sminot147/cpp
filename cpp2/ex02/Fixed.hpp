@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:56:23 by sminot            #+#    #+#             */
-/*   Updated: 2025/05/26 11:23:38 by sminot           ###   ########.fr       */
+/*   Updated: 2025/05/26 13:11:28 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,34 @@ public:
 	//Convert
 	float toFloat( void ) const;
 	int toInt( void ) const;
+
+	// Other fonctions
+	static Fixed min (Fixed &a, Fixed &b);
+	static Fixed min (const Fixed &a, const Fixed &b);
+	static Fixed max (Fixed &a, Fixed &b);
+	static Fixed max (const Fixed &a, const Fixed &b);
+
+	// Overloaded Operators
+
+	// Arithmetic Operators
+	Fixed operator+(const Fixed &rhs) const;
+	Fixed operator-(const Fixed &rhs) const;
+	Fixed operator*(const Fixed &rhs) const;
+	Fixed operator/(const Fixed &rhs) const;
+
+	// Increment and decrement Operators
+	Fixed& operator++();
+	Fixed operator++(int);
+	Fixed& operator--();
+	Fixed operator--(int);
+
+	// Comparison Operators	
+	bool operator>(const Fixed &rhs) const;
+	bool operator<(const Fixed &rhs) const;
+	bool operator>=(const Fixed &rhs) const;
+	bool operator<=(const Fixed &rhs) const;
+	bool operator==(const Fixed &rhs) const;
+	bool operator!=(const Fixed &rhs) const;
 
 private:
 	int				 _value;
