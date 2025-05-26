@@ -6,7 +6,7 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/16 17:45:04 by sminot            #+#    #+#              #
-#    Updated: 2025/05/17 14:11:29 by sminot           ###   ########.fr        #
+#    Updated: 2025/05/23 18:06:24 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,6 @@ fclean: clean
 
 re: fclean all
 
--include $(DEPS)
+-include $(OBJ_DEPS)
 
 .PHONY: all clean fclean re

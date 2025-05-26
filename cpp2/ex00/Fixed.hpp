@@ -6,7 +6,7 @@
 /*   By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/20 17:56:23 by sminot            #+#    #+#             */
-/*   Updated: 2025/05/20 18:30:25 by sminot           ###   ########.fr       */
+/*   Updated: 2025/05/23 14:20:24 by sminot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ public:
 
 private:
 	int				 _value;
-	static const int _fractionalBits = 8;
-
+	static const int _bitToFloat = 8;
 };
 
 #endif
