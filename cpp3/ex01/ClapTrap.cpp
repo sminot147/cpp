@@ -3,18 +3,51 @@
 #include <unistd.h>
 
 /*----------------------------------------------------------------------------*/
+/*							  Setter and Gatter                               */
+/*----------------------------------------------------------------------------*/
+void ClapTrap::setName(const std::string &name) {
+	_name = name;
+}
+void ClapTrap::setHitPoints(unsigned int hitPoints) {
+	if (hitPoints > _hitPointsMax) {
+		_hitPointsMax = hitPoints;
+	}
+	_hitPoints = hitPoints;
+}
+void ClapTrap::setEnergyPoints(unsigned int energyPoints) {
+	_energyPoints = energyPoints;
+}
+void ClapTrap::setAttackDamage(unsigned int attackDamage) {
+	_attackDamage = attackDamage;
+}
+
+std::string ClapTrap::getName() const {
+	return _name;
+}
+unsigned int ClapTrap::getHitPoints() const {
+	return _hitPoints;
+}
+unsigned int ClapTrap::getEnergyPoints() const {
+	return _energyPoints;
+}
+unsigned int ClapTrap::getAttackDamage() const {
+	return _attackDamage;
+}
+
+
+/*----------------------------------------------------------------------------*/
 /*                              Canonical Form                                */
 /*----------------------------------------------------------------------------*/
 
 ClapTrap::ClapTrap() :
-_name("ClapTrap"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+_name("ClapTrap"), _hitPoints(10), _energyPoints(10), _attackDamage(0), _hitPointsMax(10)
 {
 	std::cout << "ClapTrap " << _name << " created." << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) :
 _name(other._name), _hitPoints(other._hitPoints),
-_energyPoints(other._energyPoints), _attackDamage(other._attackDamage)
+_energyPoints(other._energyPoints), _attackDamage(other._attackDamage), _hitPointsMax(other._hitPointsMax)
 {
 	std::cout << "ClapTrap " << _name << " copied." << std::endl;
 }
@@ -26,6 +59,7 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other)
 		_hitPoints = other._hitPoints;
 		_energyPoints = other._energyPoints;
 		_attackDamage = other._attackDamage;
+		_hitPointsMax = other._hitPointsMax;
 	}
 	return *this;
 }
@@ -40,7 +74,7 @@ ClapTrap::~ClapTrap()
 /*----------------------------------------------------------------------------*/
 
 ClapTrap::ClapTrap(const std::string &name) :
-_name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
+_name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0), _hitPointsMax(10)
 {
 	std::cout << "ClapTrap " << _name << " created." << std::endl;
 }
@@ -100,15 +134,15 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 		std::cout << "ClapTrap " << _name << " repairs nothing." << std::endl;
 		return;
 	}
-	if (_hitPoints == 10) {
+	if (_hitPoints == _hitPointsMax) {
 		std::cout << "ClapTrap " << _name << " is already at full health." << std::endl;
 		return;
 	}
 	if (_energyPoints > 0) {
 		--_energyPoints;
 		std::cout << "ClapTrap " << _name << " repairs itself. He have " << _hitPoints << " hit points before repair and ";
-		if (amount > 10 || _hitPoints + amount > 10) {
-			_hitPoints = 10;
+		if (amount > _hitPointsMax || _hitPoints + amount > _hitPointsMax) {
+			_hitPoints = _hitPointsMax;
 		}
 		else {
 			_hitPoints += amount;
