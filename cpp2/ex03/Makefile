@@ -6,14 +6,16 @@
 #    By: sminot <simeon.minot@outlook.fr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/20 18:27:15 by sminot            #+#    #+#              #
-#    Updated: 2025/05/23 18:06:24 by sminot           ###   ########.fr        #
+#    Updated: 2025/05/27 11:51:31 by sminot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = a.out
 
 FILES = main.cpp\
-	Fixed.cpp
+	Fixed.cpp\
+	Point.cpp\
+	bsp.cpp\
 
 OBJ_DIR = obj
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.cpp=.o))
