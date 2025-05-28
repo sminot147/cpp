@@ -41,7 +41,7 @@ int PowerOfTwo(int power){
 
 Fixed::Fixed(int intNb) {
 	std::cout << "Int constructor called" << std::endl;
-	if (intNb >= PowerOfTwo(32 - this->_bitToFloat)){
+	if (intNb >= PowerOfTwo(31 - this->_bitToFloat)){
 		std::cout << "The number is too Huge to be correctly save" <<std::endl;
 	}
 	this->_value = intNb << this->_bitToFloat;
@@ -74,7 +74,6 @@ void Fixed::setRawBits(int const raw) {
 
 float Fixed::toFloat(void) const {
 	float nb = this->_value;
-	nb = this->_value;
 	nb = nb / PowerOfTwo(this->_bitToFloat);
 	return nb;
 }
