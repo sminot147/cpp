@@ -28,6 +28,8 @@ int main(void)
 		scav1.attack("Alice");
 		scav2.takeDamage(60);
 		scav2.beRepaired(10);
+		scav2 = scav1;
+		scav2.attack("Test");
 	}
 
 	return 0;

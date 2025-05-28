@@ -16,23 +16,16 @@ ScavTrap::ScavTrap() :
 	std::cout << "ScavTrap " << ClapTrap::getName() << " created." << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other) :
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other), 
 	_guardMode(other._guardMode)
 {
-	ClapTrap::setName(other.getName());
-	ClapTrap::setHitPoints(other.getHitPoints());
-	ClapTrap::setEnergyPoints(other.getEnergyPoints());
-	ClapTrap::setAttackDamage(other.getAttackDamage());
 	std::cout << "ScavTrap " << getName() << " copied." << std::endl;
 }
 
 
 ScavTrap &ScavTrap::operator=(const ScavTrap &other) {
 	if (this != &other) {
-		ClapTrap::setName(other.getName());
-		ClapTrap::setHitPoints(other.getHitPoints());
-		ClapTrap::setEnergyPoints(other.getEnergyPoints());
-		ClapTrap::setAttackDamage(other.getAttackDamage());
+		ClapTrap::operator=(other);
 		_guardMode = other._guardMode;
 	}
 	return *this;

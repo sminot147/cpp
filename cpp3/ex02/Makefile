@@ -1,4 +1,4 @@
-NAME = fragtrap
+NAME = a.out
 
 FILES = main.cpp\
     ClapTrap.cpp\
@@ -13,19 +13,19 @@ CPPFLAGS = -Wall -Wextra -Werror -MMD -std=c++98
 CPP = c++
 
 $(OBJ_DIR)/%.o: %.cpp
-    @mkdir -p $(OBJ_DIR)
-    $(CPP) $(CPPFLAGS) -c $< -o $@
+	@mkdir -p $(OBJ_DIR)
+	$(CPP) $(CPPFLAGS) -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OBJ_FILES)
-    $(CPP) $(CPPFLAGS) $(OBJ_FILES) -o $(NAME)
+	$(CPP) $(CPPFLAGS) $(OBJ_FILES) -o $(NAME)
 
 clean:
-    rm -rf $(OBJ_DIR)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
-    rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 

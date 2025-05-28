@@ -1,5 +1,5 @@
 #ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+# define SCAVTRAP_HPP
 
 # include "ClapTrap.hpp"
 # include <iostream>
@@ -24,4 +24,4 @@ public:
     void guardGate();
 };
 
-#endif // SCAVTRAP_HPP
+#endif
