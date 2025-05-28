@@ -4,16 +4,13 @@ FILES = main.cpp\
 	Animal.cpp\
 	Cat.cpp\
 	Dog.cpp\
-	WrongAnimal.cpp\
-	WrongCat.cpp
-
-
+	Brain.cpp\
 
 OBJ_DIR = obj
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.cpp=.o))
 OBJ_DEPS = $(addprefix $(OBJ_DIR)/, $(FILES:.cpp=.d))
 
-CPPFLAGS = -Wall -Wextra -Werror -MMD -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -MMD -std=c++98 -g3
 CPP = c++
 
 $(OBJ_DIR)/%.o: %.cpp
