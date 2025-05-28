@@ -1,9 +1,9 @@
 NAME = a.out
 
 FILES = main.cpp\
-    ClapTrap.cpp\
-    ScavTrap.cpp\
-    FragTrap.cpp\
+	ClapTrap.cpp\
+	ScavTrap.cpp\
+	FragTrap.cpp\
 
 OBJ_DIR = obj
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.cpp=.o))
