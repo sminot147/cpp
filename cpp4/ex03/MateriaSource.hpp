@@ -4,16 +4,16 @@
 #include "IMateriaSource.hpp"
 #include "AMateria.hpp"
 
-class MaterialSource : public IMateriaSource
+class MateriaSource : public IMateriaSource
 {
 private:
 	AMateria*   _inventory[4];
 	
 public:
-	MaterialSource();
-	MaterialSource(MaterialSource const & src);
-	MaterialSource & operator=(MaterialSource const & rhs);
-	~MaterialSource();
+	MateriaSource();
+	MateriaSource(MateriaSource const & src);
+	MateriaSource & operator=(MateriaSource const & rhs);
+	~MateriaSource();
 	
 	
 	void learnMateria(AMateria*);
