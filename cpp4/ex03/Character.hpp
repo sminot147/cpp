@@ -2,13 +2,27 @@
 # define CHARACTER_HPP
 
 # include <string>
-# include "ICharacter"
+# include "ICharacter.hpp"
 
+# define MAX_MAT_ON_FLOOR 100
 
-class Character : public Character
+class Character : public ICharacter
 {
+private:
+	std::string _name;
+	AMateria * _inventory[4];
+	AMateria * floor[MAX_MAT_ON_FLOOR];
+	int _nbMatFloor = 0;
+
 public:
-	virtual ~Character() {}
+
+	Character();
+	Character(const Character &other);
+	Character & operator=(const Character &rhs);
+	~Character();
+
+	Character(std::string name);
+	
 	std::string const & getName() const;
 	void equip(AMateria* m);
 	void unequip(int idx);
