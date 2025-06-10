@@ -1,11 +1,36 @@
-NAME=a.out
+NAME = a.out
 
-FILE=
+FILES = main.cpp\
+	AMateria.cpp\
+	Ice.cpp\
+	Cure.cpp\
+	Character.cpp\
+	MateriaSource.cpp\
 
+OBJ_DIR = obj
+OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.cpp=.o))
+OBJ_DEPS = $(addprefix $(OBJ_DIR)/, $(FILES:.cpp=.d))
 
-CC=cpp
-CFLAGS=-Walle -Wextra -Werror -std=c++98
+CPPFLAGS = -Wall -Wextra -Werror -MMD -std=c++98
+CPP = c++
 
-all:$(NAME)
+$(OBJ_DIR)/%.o: %.cpp
+	@mkdir -p $(OBJ_DIR)
+	$(CPP) $(CPPFLAGS) -c $< -o $@
 
-$(NAME) : 
+all: $(NAME)
+
+$(NAME): $(OBJ_FILES)
+	$(CPP) $(CPPFLAGS) $(OBJ_FILES) -o $(NAME)
+
+clean:
+	rm -rf $(OBJ_DIR)
+
+fclean: clean
+	rm -f $(NAME)
+
+re: fclean all
+
+-include $(OBJ_DEPS)
+
+.PHONY: all clean fclean re
