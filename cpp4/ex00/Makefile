@@ -7,8 +7,6 @@ FILES = main.cpp\
 	WrongAnimal.cpp\
 	WrongCat.cpp
 
-
-
 OBJ_DIR = obj
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.cpp=.o))
 OBJ_DEPS = $(addprefix $(OBJ_DIR)/, $(FILES:.cpp=.d))

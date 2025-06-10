@@ -10,7 +10,7 @@ OBJ_DIR = obj
 OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(FILES:.cpp=.o))
 OBJ_DEPS = $(addprefix $(OBJ_DIR)/, $(FILES:.cpp=.d))
 
-CPPFLAGS = -Wall -Wextra -Werror -MMD -std=c++98 -g3
+CPPFLAGS = -Wall -Wextra -Werror -MMD -std=c++98
 CPP = c++
 
 $(OBJ_DIR)/%.o: %.cpp
