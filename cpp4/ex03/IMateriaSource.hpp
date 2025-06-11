@@ -11,4 +11,4 @@ class IMateriaSource
 	virtual AMateria* createMateria(std::string const & type) = 0;
 };
 
-#endif;
+#endif

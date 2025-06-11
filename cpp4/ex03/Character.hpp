@@ -2,6 +2,7 @@
 # define CHARACTER_HPP
 
 # include <string>
+# include "AMateria.hpp"
 # include "ICharacter.hpp"
 
 # define MAX_MAT_ON_FLOOR 100
@@ -12,7 +13,7 @@ private:
 	std::string _name;
 	AMateria * _inventory[4];
 	AMateria * floor[MAX_MAT_ON_FLOOR];
-	int _nbMatFloor = 0;
+	int _nbMatFloor;
 
 public:
 
@@ -24,7 +25,7 @@ public:
 	Character(std::string name);
 	
 	std::string const & getName() const;
-	void equip(AMateria* m);
+	void equip(AMateria * m);
 	void unequip(int idx);
 	void use(int idx, ICharacter& target);
 };

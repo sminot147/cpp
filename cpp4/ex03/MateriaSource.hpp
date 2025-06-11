@@ -16,7 +16,7 @@ public:
 	~MateriaSource();
 	
 	
-	void learnMateria(AMateria*);
+	void learnMateria(AMateria* mat);
 	AMateria* createMateria(std::string const & type);
 };
 

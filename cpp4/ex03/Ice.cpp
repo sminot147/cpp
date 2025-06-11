@@ -10,13 +10,14 @@ Ice::Ice(const Ice &other) : AMateria(other)
 Ice & Ice::operator=(const Ice &other)
 {
 	AMateria::operator=(other);
+	return *this;
 }
 
 Ice::~Ice(){}
 
 AMateria * Ice::clone() const
 {
-	return &Ice(*this);
+	return new Ice(*this);
 }
 
 void Ice::use(ICharacter& target){

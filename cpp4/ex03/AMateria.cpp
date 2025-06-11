@@ -16,6 +16,7 @@ AMateria & AMateria::operator=(const AMateria &rhs)
 	if (this != &rhs) {
 		this->_type = rhs._type;
 	}
+	return *this;
 }
 
 AMateria::~AMateria()
@@ -29,7 +30,7 @@ std::string const & AMateria::getType( void ) const {
 	return _type;
 }
 
-void use(ICharacter& target)
+void AMateria::use(ICharacter& target)
 {
-	std::cout << "You never see this message !" <<std::endl;
+	std::cout << "A Materia is use on" << target.getName() << std::endl;
 }
