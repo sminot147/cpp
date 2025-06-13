@@ -1,55 +1,66 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "Animal.hpp"
+#include <cassert>
 
-int main()
-{
+int main() {
+
 	{
-		Animal *animal[100];
-		for (int i = 0; i < 50; i++)
-			animal[i] = new Cat();
-		for (int i = 50; i < 100; i++)
-			animal[i] = new Dog();
+		std::cout << "\n=== Testing Animal Array ===" << std::endl;
 		
-		animal[25]->makeSound();
-		animal[75]->makeSound();
-		for (int i = 0; i < 100; i++){
-			std::cout << "animal[" << i << "] type: " << animal[i]->getType() << std::endl;
-			delete animal[i];
+		Animal *animals[4];
+		
+		animals[0] = new Cat();
+		animals[1] = new Dog(); 
+
+		assert(animals[0]->getType() == "Cat");
+		assert(animals[1]->getType() == "Dog");
+		
+		for(int i = 0; i < 2; i++) {
+			delete animals[i];
 		}
-
+	}
+	{
+		std::cout << "\n=== Testing Cat Deep Copy ===" << std::endl;
+		
+		Cat original;
+		original.setIdea(0, "test 1");
+		original.setIdea(1, "test 2");
+		
+		Cat copy(original);
+		assert(copy.getIdea(0) == "test 1");
+		assert(copy.getIdea(1) == "test 2");
+		
+		original.setIdea(0, "modify my think");
+		assert(copy.getIdea(0) == "test 1");
 	}
 
 	{
-		std::cout << "==== Test idea copy ===="<< std::endl;
-
-		Cat cat1;
-
-		cat1.setIdea(0, "Testing");
-		Cat cat2 = cat1;
-		std::cout << "cat2 idea: " << cat2.getIdea(0) << std::endl;
-		Cat cat3(cat1);
-		std::cout << "cat3 idea: " << cat3.getIdea(0) << std::endl;
-
+		std::cout << "\n=== Testing Dog Deep Copy ===" << std::endl;
+		
+		Dog original;
+		original.setIdea(5, "Dog is stupid");
+		
+		Dog copy(original);
+		assert(copy.getIdea(5) == "Dog is stupid");
 	}
+
 	{
-		std::cout << "==== Old test ===="<< std::endl;
-		const Animal* meta = new Animal();
-		const Animal* i = new Cat();
-		const Animal* j = new Dog();
-
-		meta->makeSound();
-		std::cout << i->getType() << " make ";
-		i->makeSound();
-		std::cout << j->getType() << " make  ";
-		j->makeSound();
+		std::cout << "\n=== Testing Idea Boundaries ===" << std::endl;
 		
-		meta->makeSound();
+		Cat cat;
 		
-		delete meta;
-		delete i;
-		delete j;
+		cat.setIdea(0, "test");
+		cat.setIdea(99, "test");
+		
+		assert(cat.getIdea(0) == "test");
+		assert(cat.getIdea(99) == "test");
+	
+		std::cout <<  cat.getIdea(20) << cat.getIdea(0) <<std::endl;
+		assert(cat.getIdea(10) == "");
+		assert(cat.getIdea(-1) == "");
 	}
 
-return 0;
+	std::cout << "\nAll tests passed successfully!" << std::endl;
+	return 0;
 }

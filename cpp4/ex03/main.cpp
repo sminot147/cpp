@@ -30,63 +30,58 @@ void testMateriaCreation() {
 }
 
 void testCharacterEquipAndUse() {
-	Character* me = new Character("me");
-	Character* target = new Character("target");
+	Character* BruceLee = new Character("BruceLee");
+	Character* you = new Character("you");
 	
 	// Test equipping materia
 	AMateria* ice = new Ice();
 	AMateria* cure = new Cure();
 	
-	me->equip(ice);
-	me->equip(cure);
+	BruceLee->equip(ice);
+	BruceLee->equip(cure);
 	
 	// Test using materia
-	me->use(0, *target);
-	me->use(1, *target);
+	BruceLee->use(0, *you);
+	BruceLee->use(1, *you);
 	
-	// Test invalid or empty slot use
-	me->use(4, *target);
-	me->use(0, *target);
-	me->use(-1, *target);
+
+	BruceLee->use(4, *you);
+	BruceLee->use(0, *you);
+	BruceLee->use(-10, *you);
 	
-	delete target;
-	delete me;
+	delete you;
+	delete BruceLee;
 }
 
 void testUnequipAndMemory() {
 	Character* me = new Character("me");
 	
-	// Test equip and unequip
 	for (int i = 0; i < 20; ++i){
 		AMateria* ice = new Ice();
 		me->equip(ice);
 		me->unequip(0);
 	}
 	
-	// Test unequip invalid slot
 	me->unequip(4);
 	me->unequip(-1);
 	
-	// Test unequip empty slot
 	me->unequip(0);
 	
 	delete me;
 }
 
 void testCharacterCopy() {
-	Character* original = new Character("original");
+	Character* BruceLee = new Character("BruceLee");
 	AMateria* ice = new Ice();
-	original->equip(ice);
+	BruceLee->equip(ice);
 	
-	// Test copy constructor
-	Character* copy = new Character(*original);
+	Character* BruceLeeCopy = new Character(*BruceLee);
 	
-	// Test they are independent
-	original->unequip(0);
-	copy->use(0, *original);
+	BruceLee->unequip(0);
+	BruceLeeCopy->use(0, *BruceLee);
 	
-	delete original;
-	delete copy;
+	delete BruceLee;
+	delete BruceLeeCopy;
 }
 
 void testMateriaSourceFull() {
