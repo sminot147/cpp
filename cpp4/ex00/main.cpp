@@ -36,7 +36,13 @@ int main()
 
 		delete meta;
 		delete i;
-}
+	}
 
-return 0;
+	{
+		std::cout << "======Test chain assignment===========" << std::endl;
+		Dog dog1, dog2, dog3;
+		dog1 = dog2 = dog3;
+	}
+
+	return 0;
 }

@@ -27,3 +27,17 @@ Dog::~Dog(){
 void Dog::makeSound( void ) const {
 	std::cout << "Woof" <<std::endl;
 }
+
+
+void Dog::setIdea(int index, const std::string &idea) {
+	if (index >= 0 && index < 100) {
+		_brain->setIdea(index, idea);
+	}
+}
+
+std::string Dog::getIdea(int index) const {
+	if (index >= 0 && index < 100) {
+		return _brain->getIdea(index);
+	}
+	return "";
+}

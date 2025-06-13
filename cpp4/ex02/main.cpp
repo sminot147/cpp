@@ -1,62 +1,109 @@
 #include "Cat.hpp"
 #include "Dog.hpp"
 #include "Animal.hpp"
+#include <cassert>
 
-int main()
-{
-	{
-		Animal *animal[100];
-		for (int i = 0; i < 50; i++)
-			animal[i] = new Cat();
-		for (int i = 50; i < 100; i++)
-			animal[i] = new Dog();
-		
-		animal[25]->makeSound();
-		animal[75]->makeSound();
-		for (int i = 0; i < 100; i++){
-			std::cout << "animal[" << i << "] type: " << animal[i]->getType() << std::endl;
-			delete animal[i];
-		}
+void testAnimalArray() {
+	std::cout << "\n=== Testing Animal Array ===" << std::endl;
+	
+	Animal *animals[4];
+	animals[0] = new Cat();
+	animals[1] = new Dog(); 
+	animals[2] = new Cat();
+	animals[3] = new Dog();
 
+	// Test proper type assignment
+	assert(animals[0]->getType() == "Cat");
+	assert(animals[1]->getType() == "Dog");
+	
+	// Clean up
+	for(int i = 0; i < 4; i++) {
+		delete animals[i];
 	}
+}
 
-	{
-		std::cout << "==== Test idea copy ===="<< std::endl;
+void testCatDeepCopy() {
+	std::cout << "\n=== Testing Cat Deep Copy ===" << std::endl;
+	
+	Cat original;
+	original.setIdea(0, "Original idea");
+	original.setIdea(1, "Second thought");
+	
+	// Test copy constructor
+	Cat copy(original);
+	assert(copy.getIdea(0) == "Original idea");
+	assert(copy.getIdea(1) == "Second thought");
+	
+	// Modify original to verify deep copy
+	original.setIdea(0, "Modified idea");
+	assert(copy.getIdea(0) == "Original idea");
+	
+	// Test assignment operator
+	Cat assigned;
+	assigned = original;
+	assert(assigned.getIdea(0) == "Modified idea");
+	
+	// Modify original again
+	original.setIdea(0, "Third modification");
+	assert(assigned.getIdea(0) == "Modified idea");
+}
 
-		Cat cat1;
+void testDogDeepCopy() {
+	std::cout << "\n=== Testing Dog Deep Copy ===" << std::endl;
+	
+	Dog original;
+	original.setIdea(0, "Dog thought");
+	
+	Dog copy(original);
+	assert(copy.getIdea(0) == "Dog thought");
+	
+	original.setIdea(0, "New dog thought");
+	assert(copy.getIdea(0) == "Dog thought");
+}
 
-		cat1.setIdea(0, "Testing");
-		{
+void testIdeaBoundaries() {
+	std::cout << "\n=== Testing Idea Boundaries ===" << std::endl;
+	
+	Cat cat;
+	
+	// Test setting and getting ideas at boundaries
+	cat.setIdea(0, "First");
+	cat.setIdea(99, "Last");
+	
+	assert(cat.getIdea(0) == "First");
+	assert(cat.getIdea(99) == "Last");
+	
+	// Test invalid indices should return empty string
+	assert(cat.getIdea(100) == "");
+	assert(cat.getIdea(-1) == "");
+}
 
-			Cat cat2 = cat1;
-			std::cout << "cat2 idea: " << cat2.getIdea(0) << std::endl;
-		}
-		{
+void testAbstractAnimal() {
+	std::cout << "\n=== Testing Abstract Animal ===" << std::endl;
+	
+	// Following line should not compile as Animal is abstract
+	// Animal animal; 
+	
+	// But we can create pointers to Animal
+	Animal* cat = new Cat();
+	Animal* dog = new Dog();
+	
+	assert(cat->getType() == "Cat");
+	assert(dog->getType() == "Dog");
+	
+	delete cat;
+	delete dog;
+}
 
-			Cat cat3(cat1);
-			std::cout << "cat3 idea: " << cat3.getIdea(0) << std::endl;
-		}
-
-	}
-	{
-		std::cout << "==== Old test ===="<< std::endl;
-		// const Animal* meta = new Animal();
-		// meta->makeSound();
-		// delete meta;
-
-
-		const Animal* i = new Cat();
-		const Animal* j = new Dog();
-
-		std::cout << i->getType() << " make ";
-		i->makeSound();
-		std::cout << j->getType() << " make  ";
-		j->makeSound();
-		
-
-		delete i;
-		delete j;
-	}
-
-return 0;
+int main() {
+	std::cout << "Starting tests..." << std::endl;
+	
+	testAnimalArray();
+	testCatDeepCopy();
+	testDogDeepCopy();
+	testIdeaBoundaries();
+	testAbstractAnimal();
+	
+	std::cout << "\nAll tests passed successfully!" << std::endl;
+	return 0;
 }
